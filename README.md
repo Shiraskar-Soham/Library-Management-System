@@ -33,11 +33,3 @@ Create a Spring Boot application that provides RESTful endpoints to manage a boo
 ### **Tech:**
 
 Spring Boot, Any Database
-
-**Deadline:**
-
-**5** days from receiving this assignment.
-
-### **How to submit this:**
-
-Put it on Github and share the repository link at [tech@olik.in](mailto:tech@olik.in)
