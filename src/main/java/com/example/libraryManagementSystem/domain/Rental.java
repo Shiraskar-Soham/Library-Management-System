@@ -14,7 +14,9 @@ import java.util.Date;
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @Column (name = "id")
+    private Long id;
+
     private String bookId;
     private String renterName;
     private Date rentalDate;
