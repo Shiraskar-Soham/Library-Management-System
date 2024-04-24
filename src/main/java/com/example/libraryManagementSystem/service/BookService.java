@@ -37,4 +37,18 @@ public class BookService {
         }
         else throw new RuntimeException("Book Not Found for id = " + id);
     }
+
+    public List<Book> getByNameLike(String bookName) {
+        if(ObjectUtils.isEmpty(bookName)) throw new RuntimeException("Book Name Cant be empty");
+        List<Book> books = bookRepository.findByTitleLike(bookName);
+        if(ObjectUtils.isEmpty(books)) throw new RuntimeException("Book Not Found");
+        return books;
+    }
+
+    public List<Book> getByAuthor(String author) {
+        if(ObjectUtils.isEmpty(author)) throw new RuntimeException("Author name cannot be empty");
+        List<Book> books = bookRepository.findByAuthor(author);
+        if(ObjectUtils.isEmpty(books)) throw new RuntimeException("No book found");
+        return books;
+    }
 }
