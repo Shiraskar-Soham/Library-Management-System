@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -14,11 +15,14 @@ import java.util.Date;
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
+    @Column(name = "id")
     private Long id;
 
     private String bookId;
+
     private String renterName;
+
     private Date rentalDate;
+
     private Date returnDate;
 }

@@ -12,22 +12,24 @@ import java.util.List;
 public class AuthorController {
     @Autowired
     private AuthorService authorService;
+
     @PostMapping("/add")
-    public Author addAuthor (@RequestBody Author a){return authorService.createAuthor(a);}
+    public Author addAuthor(@RequestBody Author a) {
+        return authorService.createAuthor(a);
+    }
 
     @GetMapping("/getAll")
-    public List<Author> getAllAuthors(){
+    public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();
     }
 
     @PostMapping("/updateAuthor")
-    public Author updateAuthor(@RequestParam Long id, @RequestBody Author a){
+    public Author updateAuthor(@RequestParam Long id, @RequestBody Author a) {
         return authorService.updateAuthor(id, a);
     }
 
     @DeleteMapping("/deleteAuthor")
-    public void deleteAuthor(@RequestParam Long id){
+    public void deleteAuthor(@RequestParam Long id) {
         authorService.deleteAuthor(id);
     }
-
 }

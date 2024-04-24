@@ -14,6 +14,7 @@ import java.util.Optional;
 public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
+
     public Author createAuthor(Author a) {
 
         if (ObjectUtils.isEmpty(a)) return null;
@@ -25,7 +26,6 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-
     public Author updateAuthor(Long id, Author a) {
         if (id == null || ObjectUtils.isEmpty(a)) return null;
         Optional<Author> old = authorRepository.findById(id);
@@ -35,9 +35,10 @@ public class AuthorService {
     }
 
     public void deleteAuthor(Long id) {
-        if(authorRepository.existsById(id)){
+        if (authorRepository.existsById(id)) {
             authorRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Author Not Found for id = " + id);
         }
-        else throw new RuntimeException("Author Not Found for id = " + id);
     }
 }

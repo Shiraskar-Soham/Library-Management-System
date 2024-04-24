@@ -13,8 +13,9 @@ import java.util.Optional;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
+
     public Book createBook(Book b) {
-        if(ObjectUtils.isEmpty(b)) return null;
+        if (ObjectUtils.isEmpty(b)) return null;
         bookRepository.save(b);
         return b;
     }
@@ -32,23 +33,24 @@ public class BookService {
     }
 
     public void deleteBook(Long id) {
-        if(bookRepository.existsById(id)) {
+        if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Book Not Found for id = " + id);
         }
-        else throw new RuntimeException("Book Not Found for id = " + id);
     }
 
     public List<Book> getByNameLike(String bookName) {
-        if(ObjectUtils.isEmpty(bookName)) throw new RuntimeException("Book Name Cant be empty");
+        if (ObjectUtils.isEmpty(bookName)) throw new RuntimeException("Book Name Cant be empty");
         List<Book> books = bookRepository.findByTitleLike(bookName);
-        if(ObjectUtils.isEmpty(books)) throw new RuntimeException("Book Not Found");
+        if (ObjectUtils.isEmpty(books)) throw new RuntimeException("Book Not Found");
         return books;
     }
 
     public List<Book> getByAuthor(String author) {
-        if(ObjectUtils.isEmpty(author)) throw new RuntimeException("Author name cannot be empty");
+        if (ObjectUtils.isEmpty(author)) throw new RuntimeException("Author name cannot be empty");
         List<Book> books = bookRepository.findByAuthor(author);
-        if(ObjectUtils.isEmpty(books)) throw new RuntimeException("No book found");
+        if (ObjectUtils.isEmpty(books)) throw new RuntimeException("No book found");
         return books;
     }
 }
