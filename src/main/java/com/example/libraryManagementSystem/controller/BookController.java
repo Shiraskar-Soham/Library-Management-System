@@ -25,7 +25,7 @@ public class BookController {
         return bookService.updateBook(id, b);
     }
     @DeleteMapping("/deleteBook")
-    public void deleteBook(@RequestParam Long id){
-        bookService.deleteBook(id);
-    }
+    public void deleteBook(@RequestParam Long id){ bookService.deleteBook(id); }
+
+
 }
