@@ -2,6 +2,7 @@ package com.example.libraryManagementSystem.service;
 
 import com.example.libraryManagementSystem.domain.Book;
 import com.example.libraryManagementSystem.repository.BookRepository;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -52,5 +53,16 @@ public class BookService {
         List<Book> books = bookRepository.findByAuthor(author);
         if (ObjectUtils.isEmpty(books)) throw new RuntimeException("No book found");
         return books;
+    }
+
+    public List<Book> getBooksByIds(Set<Long> bookIds) {
+        if (ObjectUtils.isEmpty(bookIds)) throw new RuntimeException("Book Ids cannot be empty");
+        List<Book> books = bookRepository.findByIdIn(bookIds);
+        if (ObjectUtils.isEmpty(books)) throw new RuntimeException("No book found");
+        return books;
+    }
+
+    public List<Book> getAvailableBooks(Set<Long> rentedBookIds) {
+        return bookRepository.findByIdNotIn(rentedBookIds);
     }
 }

@@ -19,7 +19,7 @@ public class Rental {
     private Long id;
 
     @Column(nullable = false)
-    private String bookId;
+    private Long bookId;
 
     @Column(nullable = false)
     private String renterName;
