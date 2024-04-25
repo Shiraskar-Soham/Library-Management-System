@@ -9,6 +9,8 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class BookService {
@@ -17,6 +19,9 @@ public class BookService {
 
     public Book createBook(Book b) {
         if (ObjectUtils.isEmpty(b)) return null;
+        if (!isValidISBN(b.getIsbn())){
+            throw new RuntimeException("ISBN not valid");
+        }
         bookRepository.save(b);
         return b;
     }
@@ -65,4 +70,16 @@ public class BookService {
     public List<Book> getAvailableBooks(Set<Long> rentedBookIds) {
         return bookRepository.findByIdNotIn(rentedBookIds);
     }
+
+    public boolean existsById(Long bookId) {
+        return bookRepository.existsById(bookId);
+    }
+
+    private static boolean isValidISBN(String isbn) {
+        String isbnPattern = "^\\d{10}$|^\\d{13}$";
+        Pattern pattern = Pattern.compile(isbnPattern);
+        Matcher matcher = pattern.matcher(isbn);
+        return matcher.matches();
+    }
+
 }

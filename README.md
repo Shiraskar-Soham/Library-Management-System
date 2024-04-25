@@ -31,5 +31,7 @@ Create a Spring Boot application that provides RESTful endpoints to manage a boo
     - Include any additional documentation explaining design decisions or assumptions made during development.
 
 ### **Tech:**
-
 Spring Boot, Any Database
+
+
+API Collection - https://api.postman.com/collections/33561225-fe71e962-a850-4eff-aa48-66023d97f1ee?access_key=PMAT-01HWB1YWN137F5EREQ32RV7WPS
