@@ -6,10 +6,7 @@ import com.example.libraryManagementSystem.service.RentalService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/rental")
@@ -19,17 +16,17 @@ public class RentalController {
     private RentalService rentalService;
 
     @PostMapping("/rentBook")
-    public Rental rentBook(Rental r) {
+    public Rental rentBook(@RequestBody Rental r) {
         return rentalService.rentBook(r);
     }
 
     @PostMapping("/returnBook")
-    public Rental returnBook(Long bookId) {
+    public Rental returnBook(@RequestParam Long bookId) {
         return rentalService.returnBook(bookId);
     }
 
     @GetMapping("/getAllRentalsByBookId")
-    public List<Rental> getAllRentalsByBookId(Long bookId) {
+    public List<Rental> getAllRentalsByBookId(@RequestParam Long bookId) {
         return rentalService.getAllRentalsByBookId(bookId);
     }
 

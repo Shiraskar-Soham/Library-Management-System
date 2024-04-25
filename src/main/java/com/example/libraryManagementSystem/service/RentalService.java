@@ -26,6 +26,7 @@ public class RentalService {
         if (ObjectUtils.isEmpty(r)) throw new RuntimeException("Rental cannot be empty");
         Rental old = rentalRepository.findByBookIdAndReturnDateIsNull(r.getBookId());
         if (!ObjectUtils.isEmpty(old)) throw new RuntimeException("Book already rented for bookId = " + r.getBookId());
+        r.setRentalDate(new Date(System.currentTimeMillis()));
         return rentalRepository.save(r);
     }
 
@@ -58,6 +59,7 @@ public class RentalService {
     public List<Pair<Rental, Book>> getOverdueRentals() {
         Date rentedSafeDate = new Date(System.currentTimeMillis()-(OVERDUE_DAYS*24*60*60*1000));
         Set<Long> overdueBookIds = rentalRepository.findBookIdsByRentalDateLessThanAndReturnDateIsNull(rentedSafeDate);
+        if (ObjectUtils.isEmpty(overdueBookIds)) throw new RuntimeException("No Books Overdue");
         return bookService.getBooksByIds(overdueBookIds).stream().map(b -> Pair.of(rentalRepository.findByBookIdAndReturnDateIsNull(b.getId()), b)).toList();
     }
 }
