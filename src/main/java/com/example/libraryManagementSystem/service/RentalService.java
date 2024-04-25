@@ -3,6 +3,7 @@ package com.example.libraryManagementSystem.service;
 import com.example.libraryManagementSystem.domain.Rental;
 import com.example.libraryManagementSystem.repository.RentalRepository;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -25,5 +26,10 @@ public class RentalService {
         Date currentDate = new Date(System.currentTimeMillis());
         r.setReturnDate(currentDate);
         return rentalRepository.save(r);
+    }
+
+    public List<Rental> getAllRentalsByBookId(String bookId) {
+        if (ObjectUtils.isEmpty(bookId)) throw new RuntimeException("Book Id cannot be empty");
+        return rentalRepository.findByBookId(bookId);
     }
 }
