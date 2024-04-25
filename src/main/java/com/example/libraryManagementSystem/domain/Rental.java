@@ -18,8 +18,8 @@ public class Rental {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private Long bookId;
+    @Column(name = "book_id", nullable = false)
+    private Long bookId; // This field represents the foreign key to the Book entity's id
 
     @Column(nullable = false)
     private String renterName;
