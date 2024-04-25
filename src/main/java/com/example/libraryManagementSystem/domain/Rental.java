@@ -15,13 +15,16 @@ import java.util.Date;
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String bookId;
 
+    @Column(nullable = false)
     private String renterName;
 
+    @Column(nullable = false)
     private Date rentalDate;
 
     private Date returnDate;

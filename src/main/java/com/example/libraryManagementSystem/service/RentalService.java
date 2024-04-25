@@ -16,6 +16,8 @@ public class RentalService {
 
     public Rental rentBook(Rental r) {
         if (ObjectUtils.isEmpty(r)) throw new RuntimeException("Rental cannot be empty");
+        Rental old = rentalRepository.findByBookIdAndReturnDateIsNull(r.getBookId());
+        if (!ObjectUtils.isEmpty(old)) throw new RuntimeException("Book already rented for bookId = " + r.getBookId());
         return rentalRepository.save(r);
     }
 
