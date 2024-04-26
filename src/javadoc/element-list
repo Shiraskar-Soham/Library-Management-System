@@ -1,0 +1,5 @@
+com.example.libraryManagementSystem
+com.example.libraryManagementSystem.controller
+com.example.libraryManagementSystem.domain
+com.example.libraryManagementSystem.repository
+com.example.libraryManagementSystem.service
