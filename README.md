@@ -1,6 +1,16 @@
 # Library-Management-System
 # Java Assignment Problem Statement
 
+### **Steps to Run**
+1) Open the file .run/Local.run.xml 
+2) Its a Configuration file so Run it in order to start the server or Directly run the Application file : com/example/libraryManagementSystem/LibraryManagementSystemApplication.java from IDE (IntelliJ used by me)
+3) JDK 21 is used for this project
+4) Mysql Data base is used and should be running on port 3306 on your local machine
+5) lmsdb database will be created on server startup
+6) Postman Collection of APIs are shared : API Collection - https://api.postman.com/collections/33561225-fe71e962-a850-4eff-aa48-66023d97f1ee?access_key=PMAT-01HWB1YWN137F5EREQ32RV7WPS
+
+
+
 ### **Task**
 
 Create a Spring Boot application that provides RESTful endpoints to manage a book library. The application should support CRUD operations for books, authors, and book rentals.
@@ -32,6 +42,3 @@ Create a Spring Boot application that provides RESTful endpoints to manage a boo
 
 ### **Tech:**
 Spring Boot, Any Database
-
-
-[//]: # (API Collection - https://api.postman.com/collections/33561225-fe71e962-a850-4eff-aa48-66023d97f1ee?access_key=PMAT-01HWB1YWN137F5EREQ32RV7WPS)
